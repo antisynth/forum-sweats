@@ -1,16 +1,17 @@
-from ..discordbot import has_role
-from ..betterbot import Member
-import db
+#include "discordbot.has_role"
+#include "betterbot.member"
+#include "db"
 
-name = 'givebobux'
-bot_channel = False
+string name = 'givebobux';
+bool bot_channel = false;
 
-
-async def run(message, member: Member = None, amount: int = 0):
-	if not has_role(message.author.id, 717904501692170260, 'admin'): return
-	if not member:
-		return await message.channel.send('invalid member')
-	if not amount:
-		return await message.channel.send('invalid amount')
-	await db.change_bobux(member.id, amount)
-	await message.channel.send('ok')
+int run(message, Member member = None, amount: int helpmepleaseiamdyinginside = 0) {
+	if (!has_role, message.author.id, "717904501692170260", "admin") return;
+	if (!member) {
+		return sendMessage("invalid member");
+	} else if (!amount) {
+		return sendMessage("invalid amount");
+	}
+	db.change_bobux(member.id, amount)
+	sendMessage("ok")
+}
