@@ -317,6 +317,9 @@ async def on_message(message):
 		if message.content and message.content[0] != '!' and not message.author.bot:
 			uwuized_message = uwuify.uwuify(message.content, limit=2000)
 			await message.channel.send(uwuized_message)
+	if message.author.id == 617193050178977812 and re.match(r'[\w\W]*h(oe|œ)[\w\W]*', content, flags=re.IGNORECASE):
+		await message.delete()
+		await mute_user(message.author, 1)
 	asyncio.ensure_future(db.add_message(message.author.id))
 	await process_counting_channel(message)
 	await betterbot.process_commands(message)
